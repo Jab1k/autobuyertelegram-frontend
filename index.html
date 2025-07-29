@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div id="user-profile">
+            </div>
+
+        <div id="browser-fallback" class="browser-fallback">
+            <p>Для доступа, пожалуйста, откройте это приложение через нашего Telegram-бота.</p>
+            <a href="https://t.me/autogiftsuz_bot" target="_blank">Перейти в бот</a>
+            <p>Или отсканируйте QR-код:</p>
+            <img src="qr_code.png" alt="QR Code for Telegram Bot">
+        </div>
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <script>
+        const tg = window.Telegram.WebApp;
+        
+        const profileElement = document.getElementById('user-profile');
+        const fallbackElement = document.getElementById('browser-fallback');
+
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            // --- РАБОТАЕМ ВНУТРИ TELEGRAM ---
+            profileElement.style.display = 'block';
+            tg.expand();
+
+            const user = tg.initDataUnsafe.user;
+            
+            let profileHTML = `
+                <img src="${user.photo_url || 'https://i.imgur.com/8f5K1mG.png'}" alt="Фото профиля" class="profile-pic">
+                <div class="user-info">
+                    <h2>${user.first_name} ${user.last_name || ''}</h2>
+                    <p>@${user.username || 'Юзернейм скрыт'}</p>
+                </div>
+            `;
+            profileElement.innerHTML = profileHTML;
+
+        } else {
+            // --- РАБОТАЕМ В ОБЫЧНОМ БРАУЗЕРЕ ---
+            fallbackElement.style.display = 'block';
+            document.body.style.backgroundColor = '#e8e8e8';
+        }
+    </script>
+
+</body>
+</html>

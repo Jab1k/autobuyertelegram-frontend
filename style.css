@@ -1,0 +1,72 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding: 20px;
+    margin: 0;
+    color: var(--tg-theme-text-color, #222);
+    background-color: var(--tg-theme-bg-color, #f4f4f4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid var(--tg-theme-button-color, #007bff);
+}
+
+.user-info {
+    margin-top: 15px;
+}
+
+h2 {
+    margin: 5px 0;
+}
+
+p {
+    color: var(--tg-theme-hint-color, #555);
+    margin: 5px 0;
+}
+
+/* Стили для заглушки в браузере */
+.browser-fallback {
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.browser-fallback img {
+    width: 150px;
+    height: 150px;
+    margin-top: 15px;
+}
+
+.browser-fallback p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.browser-fallback a {
+    display: inline-block;
+    background-color: #0088cc;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* По умолчанию скрываем оба блока */
+#user-profile, #browser-fallback {
+    display: none;
+}
